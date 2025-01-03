@@ -13,9 +13,9 @@ import {
 import { FlightScheduleResponse } from "@/types";
 import axios from "axios";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
-export default function Home() {
+function Home() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -110,5 +110,13 @@ export default function Home() {
         ))
       )}
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<p className="text-sm text-gray-500">Loading...</p>}>
+      <Home />
+    </Suspense>
   );
 }
