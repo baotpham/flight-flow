@@ -2,6 +2,9 @@ import { FlightScheduleResponse } from "@/types";
 import axios from "axios";
 import { NextResponse } from "next/server";
 
+export const maxDuration = 60;
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const iata = searchParams.get("iata");
